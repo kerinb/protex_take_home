@@ -1,15 +1,18 @@
 FROM python:3.9
 
-ADD / .
+# Set a working directory (inside the container)
+WORKDIR /app
 
-ENV INPUT_PATH="data_generation/resources/input/video"
-ENV OUTPUT_PATH="data_generation/resources/output/"
-ENV MODEL_CONFIG="data_generation/resources/input/config"
+# Copy contents into the container’s working directory
+COPY . .
 
-RUN echo "INPUT_PATH is: $INPUT_PATH"
-RUN echo "OUTPUT_PATH is: $OUTPUT_PATH"
-RUN echo "MODEL_CONFIG is: $MODEL_CONFIG"
+ENV INPUT_PATH="data_generation/resources/input/video-1" \
+    OUTPUT_PATH="data_generation/resources/output/" \
+    MODEL_CONFIG="data_generation/resources/input/config"
 
-RUN pip install -r requirements.txt
+RUN echo "INPUT_PATH is: $INPUT_PATH" && \
+    echo "OUTPUT_PATH is: $OUTPUT_PATH" && \
+    echo "MODEL_CONFIG is: $MODEL_CONFIG" && \
+    pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "main/main_app.py"]
+CMD ["python", "data_generation/main_logic/main_app.py"]
