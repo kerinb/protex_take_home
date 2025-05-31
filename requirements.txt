@@ -1,0 +1,4 @@
+ultralytics==8.3.146
+ultralytics-thop==2.0.14
+tqdm==4.67.1
+opencv-python==4.11.0.86
