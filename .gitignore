@@ -7,6 +7,7 @@ __pycache__/
 *.so
 .idea/
 data_generation/resources/outputs/
+data_generation/tests/data_generation/resources/outputs/
 # Distribution / packaging
 .Python
 build/
