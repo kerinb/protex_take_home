@@ -7,7 +7,12 @@ import imagehash
 from PIL import Image
 from tqdm import tqdm
 from ultralytics import YOLO
-from data_generation.main_logic.utils import format_logs, is_valid_video_file, output_visual_logs
+
+from data_generation.main_logic.utils import (
+    format_logs,
+    is_valid_video_file,
+    output_visual_logs,
+)
 
 
 def get_config(config_fp: str = None):
@@ -64,7 +69,7 @@ def get_video_path(output_dir, video_dir):
         return vid_path
     format_logs(
         "get_video_path",
-        f"no valid video path found",
+        "no valid video path found",
         time.time() - start_time,
         output_dir,
     )

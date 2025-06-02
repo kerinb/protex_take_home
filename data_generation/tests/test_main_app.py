@@ -1,5 +1,4 @@
 import os
-import shutil
 import unittest
 
 from data_generation.main_logic.main_app import (
@@ -98,16 +97,16 @@ class TestMainApp(unittest.TestCase):
         )
 
         self.assertTrue(FRAME_OUTPUT_DIR is not None)
-        self.assertTrue(FRAME_OUTPUT_DIR is not "None")
+        self.assertTrue(FRAME_OUTPUT_DIR != "None")
 
         self.assertTrue(COCO_OUTPUT_PATH is not None)
-        self.assertTrue(COCO_OUTPUT_PATH is not "None")
+        self.assertTrue(COCO_OUTPUT_PATH != "None")
 
         self.assertTrue(FRAME_STEP is not None)
-        self.assertTrue(FRAME_STEP is not "None")
+        self.assertTrue(FRAME_STEP != "None")
 
         self.assertTrue(MODEL_NAME is not None)
-        self.assertTrue(MODEL_NAME is not "None")
+        self.assertTrue(MODEL_NAME != "None")
 
     def test_get_config_input_file(self):
         self.assertEqual(True, True)
