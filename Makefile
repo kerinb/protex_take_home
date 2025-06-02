@@ -4,7 +4,7 @@ build:
 	@docker build -t ${DOCKER_IMAGE_NAME} .
 
 run:
-	@docker run  -e INPUT_PATH="different/input/path" ${DOCKER_IMAGE_NAME}
+	@docker run  ${DOCKER_IMAGE_NAME}
 
 ifeq ($(OS),Windows_NT)
     ACTIVATE = .\venv\Scripts\activate
@@ -15,8 +15,8 @@ endif
 venv:
 	python -m venv venv
 	$(ACTIVATE)
-	@pip install --no-cache-dir -r requirements/base.txt
-	@pip install --no-cache-dir -r requirements/test.txt
+	@pip install -r requirements/base.txt
+	@pip install -r requirements/test.txt
 
 
 test:
@@ -32,3 +32,5 @@ clean-docker:
 	@echo "remove any other dangling images"
 	@docker image prune -f
 	@echo "Docker clean up complete"
+
+end-2-end: build run clean-docker

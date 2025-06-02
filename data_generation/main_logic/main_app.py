@@ -41,7 +41,8 @@ def get_video_path():
     start_time = time.time()
     video_dir = os.getenv("INPUT_PATH", "../resources/inputs/video-1")
     files = [
-        f for f in os.listdir(video_dir)
+        f
+        for f in os.listdir(video_dir)
         if os.path.isfile(os.path.join(video_dir, f)) and is_valid_video_file(f)
     ]
     if files:
@@ -60,16 +61,6 @@ def get_video_path():
         output_dir,
     )
     return None
-
-
-def frame_to_hash(frame):
-    """
-
-    :param frame:
-    :return:
-    """
-    pil_image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-    return imagehash.phash(pil_image)
 
 
 def extract_frames(frame_output_dir, video_path, frame_step, hash_threshold=10):
@@ -205,10 +196,16 @@ def save_annotations(coco_output, coco_output_path):
     :return:
     """
     # 💾 SAVE ANNOTATIONS
+    start_time = time.time()
     with open(coco_output_path, "w") as f:
         json.dump(coco_output, f, indent=2)
 
-    print(f"COCO-format annotations saved to {coco_output_path}")
+    format_logs(
+        "save_annotations",
+        f"COCO-format annotations saved to {coco_output_path}",
+          time.time() - start_time,
+        output_dir,
+    )
 
 
 def main():
