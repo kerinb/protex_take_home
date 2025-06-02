@@ -6,9 +6,9 @@ WORKDIR /app
 # Copy contents into the container’s working directory
 COPY . .
 
-ENV INPUT_PATH="data_generation/resources/input/video-1" \
-    OUTPUT_PATH="data_generation/resources/output/" \
-    MODEL_CONFIG="data_generation/resources/input/config"
+ENV INPUT_PATH="data_generation/resources/inputs/video-1" \
+    OUTPUT_PATH="data_generation/resources/outputs/" \
+    MODEL_CONFIG="data_generation/resources/inputs/config"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libgl1 && \
