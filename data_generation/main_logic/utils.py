@@ -40,8 +40,12 @@ def format_logs(func_name, message, elapsed_time, output_dir):
         writer.writerow([now, func_name, f"Function: {message}", elapsed_time])
 
 
-def output_visual_logs():
-    pass
+def output_visual_logs(output_dir):
+    import pandas as pd
+
+    df = pd.read_csv("../resources/outputs/logs.csv", delimiter="|")
+    with open(f"{output_dir}/tabulated_logs.md", "w") as md:
+        df.to_markdown(buf=md, tablefmt="grid")
 
 
 def input_data_validation():

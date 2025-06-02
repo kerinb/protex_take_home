@@ -7,39 +7,47 @@ import imagehash
 from PIL import Image
 from tqdm import tqdm
 from ultralytics import YOLO
-from utils import format_logs, is_valid_video_file
-
-output_dir = ""
+from data_generation.main_logic.utils import format_logs, is_valid_video_file, output_visual_logs
 
 
-def get_config():
+def get_config(config_fp: str = None):
     """
-
-    :return:
+    @TODO - add logic to pass file instead of default values?
+    :return: tuple of strings
     """
     # 📁 CONFIG
-    global output_dir
-    output_dir = os.getenv("OUTPUT_PATH", "../resources/outputs")
-    FRAME_OUTPUT_DIR = output_dir + "/" + "frames"
-    COCO_OUTPUT_PATH = output_dir + "/" + "detections.json"
-    FRAME_STEP = 30
-    MODEL_NAME = output_dir + "/" + "yolov8n.pt"
+    output_dir = os.path.abspath(os.getenv("OUTPUT_PATH", "../resources/outputs"))
 
-    print(output_dir)
-    print(FRAME_OUTPUT_DIR)
-    print(COCO_OUTPUT_PATH)
-    print(MODEL_NAME)
-    print(os.curdir)
-    return FRAME_OUTPUT_DIR, COCO_OUTPUT_PATH, FRAME_STEP, MODEL_NAME
+    FRAME_OUTPUT_DIR, COCO_OUTPUT_PATH, MODEL_NAME, FRAME_STEP = None, None, None, None
+
+    if config_fp is not None and os.path.exists(config_fp):
+        """Read file contents here"""
+        config_fp = os.path.abspath(config_fp)
+        pass
+    else:
+        FRAME_OUTPUT_DIR = output_dir + "/" + "frames"
+        COCO_OUTPUT_PATH = output_dir + "/" + "detections.json"
+        FRAME_STEP = 30
+        MODEL_NAME = output_dir + "/" + "yolov8n.pt"
+
+    assert FRAME_OUTPUT_DIR is not None
+    assert COCO_OUTPUT_PATH is not None
+    assert FRAME_STEP is not None
+    assert MODEL_NAME is not None
+
+    return FRAME_OUTPUT_DIR, COCO_OUTPUT_PATH, FRAME_STEP, MODEL_NAME, output_dir
 
 
-def get_video_path():
+def get_video_path(output_dir, video_dir):
     """
 
     :return:
     """
     start_time = time.time()
-    video_dir = os.getenv("INPUT_PATH", "../resources/inputs/video-1")
+    if video_dir is None or os.path.isdir(video_dir):
+        video_dir = "../resources/inputs/video-1"
+    video_dir = os.path.abspath(video_dir)
+
     files = [
         f
         for f in os.listdir(video_dir)
@@ -63,7 +71,9 @@ def get_video_path():
     return None
 
 
-def extract_frames(frame_output_dir, video_path, frame_step, hash_threshold=10):
+def extract_frames(
+    frame_output_dir, video_path, output_dir, frame_step, hash_threshold=10
+):
     """
 
     :param frame_output_dir:
@@ -119,7 +129,7 @@ def extract_frames(frame_output_dir, video_path, frame_step, hash_threshold=10):
     print(f"Removed {duplicate_count} duplicate frames.")
 
 
-def pre_tag_video(frame_output_dir, model_name):
+def pre_tag_video(frame_output_dir, model_name, output_dir):
     """
 
     :param frame_output_dir:
@@ -188,7 +198,7 @@ def pre_tag_video(frame_output_dir, model_name):
     return coco_output
 
 
-def save_annotations(coco_output, coco_output_path):
+def save_annotations(coco_output, coco_output_path, output_dir):
     """
 
     :param coco_output:
@@ -203,7 +213,7 @@ def save_annotations(coco_output, coco_output_path):
     format_logs(
         "save_annotations",
         f"COCO-format annotations saved to {coco_output_path}",
-          time.time() - start_time,
+        time.time() - start_time,
         output_dir,
     )
 
@@ -213,11 +223,17 @@ def main():
 
     :return:
     """
-    frame_output_dir, coco_output_path, frame_step, model_name = get_config()
-    video_path = get_video_path()
-    extract_frames(frame_output_dir, video_path, frame_step)
-    coco_output = pre_tag_video(frame_output_dir, model_name)
-    save_annotations(coco_output, coco_output_path)
+    config_fp = os.getenv("INPUT_PATH")
+    video_dir = os.getenv("INPUT_PATH")
+
+    frame_output_dir, coco_output_path, frame_step, model_name, output_dir = get_config(
+        config_fp
+    )
+    video_path = get_video_path(output_dir, video_dir)
+    extract_frames(frame_output_dir, video_path, output_dir, frame_step)
+    coco_output = pre_tag_video(frame_output_dir, model_name, output_dir)
+    save_annotations(coco_output, coco_output_path, output_dir)
+    output_visual_logs(output_dir)
 
 
 if __name__ == "__main__":
