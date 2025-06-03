@@ -213,6 +213,12 @@ def pre_tag_video(frame_output_dir, model_name, output_dir):
         0,
         output_dir,
     )
+    format_logs(
+        "pre_tag_video",
+        f"Class Information: {len(category_map)}",
+        0,
+        output_dir,
+    )
     return coco_output
 
 
@@ -248,6 +254,7 @@ def main():
     """
     :return:
     """
+    start_time = time.time()
     config_fp = os.getenv("INPUT_PATH")
     video_dir = os.getenv("INPUT_PATH")
 
@@ -264,6 +271,12 @@ def main():
     coco_output = pre_tag_video(frame_output_dir, model_name, output_dir)
     save_annotations(coco_output, coco_output_path, output_dir)
     output_visual_logs(output_dir)
+    format_logs(
+        "main function",
+        "All required logic complete",
+        0,
+        time.time() - start_time,
+    )
 
 
 if __name__ == "__main__":

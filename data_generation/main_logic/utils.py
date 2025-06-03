@@ -35,9 +35,9 @@ def format_logs(func_name, message, elapsed_time, output_dir):
         writer = csv.writer(file, delimiter="|")
 
         if not file_exists:
-            writer.writerow(["timestamp", "function_name", "message", "execution_time"])
+            writer.writerow(["timestamp", "function_name", "message", "execution_time (s)"])
 
-        writer.writerow([now, func_name, f"Function: {message}", elapsed_time])
+        writer.writerow([now, f"Function Name: {func_name}", message, elapsed_time])
 
 
 def output_visual_logs(output_dir):
@@ -47,7 +47,3 @@ def output_visual_logs(output_dir):
     df = pd.read_csv("../resources/outputs/logs.csv", delimiter="|")
     with open(f"{output_dir}/tabulated_logs.md", "w") as md:
         df.to_markdown(buf=md, tablefmt="grid")
-
-
-def input_data_validation():
-    pass
