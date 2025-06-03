@@ -41,6 +41,7 @@ def format_logs(func_name, message, elapsed_time, output_dir):
 
 
 def output_visual_logs(output_dir):
+    # Dataset stats (image count, detection count, class distribution)
     import pandas as pd
 
     df = pd.read_csv("../resources/outputs/logs.csv", delimiter="|")

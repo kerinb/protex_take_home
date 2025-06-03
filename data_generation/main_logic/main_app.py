@@ -77,7 +77,7 @@ def get_video_path(output_dir, video_dir):
 
 
 def extract_frames(
-    frame_output_dir, video_path, output_dir, frame_step, hash_threshold=10
+    frame_output_dir, video_path, output_dir, frame_step, hash_threshold=5
 ):
     """
 
@@ -125,7 +125,19 @@ def extract_frames(
     # Log once after finishing
     format_logs(
         "extract_frames",
-        f"Extracted {frame_idx} frames, saved {saved_idx} unique frames, removed {duplicate_count} duplicates",
+        f"Extracted {frame_idx} frames",
+        time.time() - start_time,
+        output_dir,
+    )
+    format_logs(
+        "extract_frames",
+        f"saved {saved_idx} unique frames",
+        time.time() - start_time,
+        output_dir,
+    )
+    format_logs(
+        "extract_frames",
+        f"removed {duplicate_count} duplicates",
         time.time() - start_time,
         output_dir,
     )
@@ -141,6 +153,9 @@ def pre_tag_video(frame_output_dir, model_name, output_dir):
     :param model_name:
     :return:
     """
+
+    # @TODO - get number of detections oer frame
+    # @TODO - can I remove noisy / bad frames?
     # 🤖 PRE-TAG WITH YOLO
     start_time = time.time()
     model = YOLO(model_name)
@@ -199,7 +214,12 @@ def pre_tag_video(frame_output_dir, model_name, output_dir):
         time.time() - start_time,
         output_dir,
     )
-
+    format_logs(
+        "pre_tag_video",
+        f"Number of categories detected: {len(category_map)}",
+        0,
+        output_dir,
+    )
     return coco_output
 
 
@@ -223,6 +243,15 @@ def save_annotations(coco_output, coco_output_path, output_dir):
     )
 
 
+def clean_up(dir_path):
+    import shutil
+    if os.path.exists(dir_path) and os.path.isdir(dir_path):
+        shutil.rmtree(dir_path)
+        print(f"Deleted directory: {dir_path}")
+    else:
+        print(f"Directory does not exist: {dir_path}")
+
+
 def main():
     """
 
@@ -234,6 +263,7 @@ def main():
     frame_output_dir, coco_output_path, frame_step, model_name, output_dir = get_config(
         config_fp
     )
+    clean_up(output_dir)
     video_path = get_video_path(output_dir, video_dir)
     extract_frames(frame_output_dir, video_path, output_dir, frame_step)
     coco_output = pre_tag_video(frame_output_dir, model_name, output_dir)
