@@ -8,11 +8,8 @@ from PIL import Image
 from tqdm import tqdm
 from ultralytics import YOLO
 
-from data_generation.main_logic.utils import (
-    format_logs,
-    is_valid_video_file,
-    output_visual_logs,
-)
+from data_generation.main_logic.utils import (format_logs, is_valid_video_file,
+                                              output_visual_logs)
 
 
 def get_config(config_fp: str = None):
@@ -23,7 +20,12 @@ def get_config(config_fp: str = None):
     # 📁 CONFIG
     output_dir = os.path.abspath(os.getenv("OUTPUT_PATH", "../resources/outputs"))
 
-    FRAME_OUTPUT_DIR, COCO_OUTPUT_PATH, MODEL_NAME, FRAME_STEP = None, None, None, None
+    FRAME_OUTPUT_DIR, COCO_OUTPUT_PATH, MODEL_NAME, FRAME_STEP = (
+        None,
+        None,
+        None,
+        None,
+    )
 
     if config_fp is not None and os.path.exists(config_fp):
         """Read file contents here"""
@@ -45,7 +47,6 @@ def get_config(config_fp: str = None):
 
 def get_video_path(output_dir, video_dir):
     """
-
     :return:
     """
     start_time = time.time()
@@ -80,7 +81,6 @@ def extract_frames(
     frame_output_dir, video_path, output_dir, frame_step, hash_threshold=5
 ):
     """
-
     :param frame_output_dir:
     :param video_path:
     :param frame_step:
@@ -104,7 +104,6 @@ def extract_frames(
             pil_img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
             curr_hash = imagehash.phash(pil_img)
 
-            # Check if curr_hash is similar to any saved hash
             is_dup = False
             for h in saved_hashes:
                 if abs(curr_hash - h) <= hash_threshold:
@@ -122,7 +121,6 @@ def extract_frames(
 
     cap.release()
 
-    # Log once after finishing
     format_logs(
         "extract_frames",
         f"Extracted {frame_idx} frames",
@@ -148,15 +146,10 @@ def extract_frames(
 
 def pre_tag_video(frame_output_dir, model_name, output_dir):
     """
-
     :param frame_output_dir:
     :param model_name:
     :return:
     """
-
-    # @TODO - get number of detections oer frame
-    # @TODO - can I remove noisy / bad frames?
-    # 🤖 PRE-TAG WITH YOLO
     start_time = time.time()
     model = YOLO(model_name)
     image_files = sorted(
@@ -225,12 +218,10 @@ def pre_tag_video(frame_output_dir, model_name, output_dir):
 
 def save_annotations(coco_output, coco_output_path, output_dir):
     """
-
     :param coco_output:
     :param coco_output_path:
     :return:
     """
-    # 💾 SAVE ANNOTATIONS
     start_time = time.time()
     with open(coco_output_path, "w") as f:
         json.dump(coco_output, f, indent=2)
@@ -245,6 +236,7 @@ def save_annotations(coco_output, coco_output_path, output_dir):
 
 def clean_up(dir_path):
     import shutil
+
     if os.path.exists(dir_path) and os.path.isdir(dir_path):
         shutil.rmtree(dir_path)
         print(f"Deleted directory: {dir_path}")
@@ -254,15 +246,18 @@ def clean_up(dir_path):
 
 def main():
     """
-
     :return:
     """
     config_fp = os.getenv("INPUT_PATH")
     video_dir = os.getenv("INPUT_PATH")
 
-    frame_output_dir, coco_output_path, frame_step, model_name, output_dir = get_config(
-        config_fp
-    )
+    (
+        frame_output_dir,
+        coco_output_path,
+        frame_step,
+        model_name,
+        output_dir,
+    ) = get_config(config_fp)
     clean_up(output_dir)
     video_path = get_video_path(output_dir, video_dir)
     extract_frames(frame_output_dir, video_path, output_dir, frame_step)

@@ -1,13 +1,9 @@
 import os
 import unittest
 
-from data_generation.main_logic.main_app import (
-    extract_frames,
-    get_config,
-    get_video_path,
-    pre_tag_video,
-    save_annotations,
-)
+from data_generation.main_logic.main_app import (extract_frames, get_config,
+                                                 get_video_path, pre_tag_video,
+                                                 save_annotations)
 
 
 class TestMainApp(unittest.TestCase):
