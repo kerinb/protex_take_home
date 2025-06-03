@@ -38,14 +38,9 @@ class TestMainApp(unittest.TestCase):
         self.assertTrue(MODEL_NAME is not None)
         self.assertTrue(MODEL_NAME != "None")
 
-    def test_get_config_input_file(self):
-        self.assertEqual(True, True)
-
-
     def test_extract_frames(self):
-
         extract_frames(
-            self.frame_output_dir, self.video_path, self.output_dir, self.frame_step, hash_threshold=5
+            self.frame_output_dir, self.video_path, self.output_dir, self.frame_step, hash_threshold=10
         )
 
         # Check folder exists

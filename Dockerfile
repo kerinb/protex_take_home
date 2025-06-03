@@ -8,7 +8,7 @@ COPY . .
 
 ENV INPUT_PATH="data_generation/resources/inputs/video-1" \
     OUTPUT_PATH="data_generation/resources/outputs/" \
-#     MODEL_CONFIG="data_generation/resources/inputs/config"
+    MODEL_CONFIG="data_generation/resources/inputs/config"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libgl1 && \
@@ -17,7 +17,7 @@ RUN apt-get update && \
 
 RUN echo "INPUT_PATH is: $INPUT_PATH" && \
     echo "OUTPUT_PATH is: $OUTPUT_PATH" && \
-#     echo "MODEL_CONFIG is: $MODEL_CONFIG" && \
+    echo "MODEL_CONFIG is: $MODEL_CONFIG" && \
     # RUN apt-get update && apt-get install -y libgl1-mesa-glx && \
     pip install --no-cache-dir -r requirements.txt
 
