@@ -45,7 +45,7 @@ class TestMainApp(unittest.TestCase):
     def test_extract_frames(self):
 
         extract_frames(
-            self.frame_output_dir, self.video_path, self.output_dir, self.frame_step
+            self.frame_output_dir, self.video_path, self.output_dir, self.frame_step, hash_threshold=5
         )
 
         # Check folder exists

@@ -10,9 +10,13 @@ run:
 
 # Detect OS and shell for venv activation and python executable
 UNAME_S := $(shell uname -s)
+VENV_PYTHON = venv/bin/python3
+
+
 ifeq ($(OS),Windows_NT)
     ACTIVATE = venv\Scripts\activate.bat
     PYTHON = python
+	VENV_PYTHON = venv\Scripts\python.exe
     ACTIVATE_CMD = cmd /c "$(ACTIVATE) &&"
 else ifeq ($(UNAME_S),Linux)
     ACTIVATE = source venv/bin/activate
@@ -28,22 +32,23 @@ else
     ACTIVATE_CMD = /bin/bash -c
 endif
 
-# Setup virtual environment and install requirements
 venv:
 	python -m venv venv
 ifeq ($(OS),Windows_NT)
-	cmd /c "venv\Scripts\activate.bat && pip install -r requirements/base.txt && pip install -r requirements/test.txt"
+	venv\Scripts\python.exe -m pip install --upgrade pip
+	venv\Scripts\python.exe -m pip install -r requirements/base.txt
+	venv\Scripts\python.exe -m pip install -r requirements/test.txt
 else
-	/bin/bash -c "source venv/bin/activate && pip install -r requirements/base.txt && pip install -r requirements/test.txt"
+	venv/bin/python3 -m pip install --upgrade pip
+	venv/bin/python3 -m pip install -r requirements/base.txt
+	venv/bin/python3 -m pip install -r requirements/test.txt
 endif
 
-# Run tests inside the virtual environment with coverage
+
+
 test:
-ifeq ($(OS),Windows_NT)
-	cmd /c "call venv\Scripts\activate.bat && python -m coverage run -m pytest"
-else
-	/bin/bash -c "source venv/bin/activate && python3 -m coverage run -m pytest"
-endif
+	$(VENV_PYTHON) -m coverage run -m pytest
+
 
 # Clean docker images and containers
 clean-docker:
@@ -58,4 +63,4 @@ clean-docker:
 	@echo "Docker cleanup complete"
 
 # Convenience target: build, run, then cleanup
-end-2-end: build run clean-docker
+end-2-end: venv test build run

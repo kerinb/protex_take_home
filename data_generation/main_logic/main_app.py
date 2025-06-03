@@ -8,8 +8,14 @@ from PIL import Image
 from tqdm import tqdm
 from ultralytics import YOLO
 
-from data_generation.main_logic.utils import (format_logs, is_valid_video_file,
-                                              output_visual_logs)
+try:
+    from utils import (
+        format_logs, is_valid_video_file, output_visual_logs
+    )
+except ModuleNotFoundError:
+    from data_generation.main_logic.utils import (
+        format_logs, is_valid_video_file, output_visual_logs
+    )
 
 
 def get_config(config_fp: str = None):
@@ -78,7 +84,7 @@ def get_video_path(output_dir, video_dir):
 
 
 def extract_frames(
-    frame_output_dir, video_path, output_dir, frame_step, hash_threshold=5
+    frame_output_dir, video_path, output_dir, frame_step, hash_threshold=1
 ):
     """
     :param frame_output_dir:
@@ -210,13 +216,13 @@ def pre_tag_video(frame_output_dir, model_name, output_dir):
     format_logs(
         "pre_tag_video",
         f"Number of categories detected: {len(category_map)}",
-        0,
+        "NA",
         output_dir,
     )
     format_logs(
         "pre_tag_video",
-        f"Class Information: {len(category_map)}",
-        0,
+        f"Class Information: {category_map}",
+        "NA",
         output_dir,
     )
     return coco_output
@@ -265,18 +271,17 @@ def main():
         model_name,
         output_dir,
     ) = get_config(config_fp)
-    clean_up(output_dir)
     video_path = get_video_path(output_dir, video_dir)
     extract_frames(frame_output_dir, video_path, output_dir, frame_step)
     coco_output = pre_tag_video(frame_output_dir, model_name, output_dir)
     save_annotations(coco_output, coco_output_path, output_dir)
-    output_visual_logs(output_dir)
     format_logs(
         "main function",
-        "All required logic complete",
-        0,
+        "completed main function",
         time.time() - start_time,
+        output_dir
     )
+    output_visual_logs(output_dir)
 
 
 if __name__ == "__main__":
