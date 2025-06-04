@@ -1,0 +1,101 @@
+timestamp|function_name|message|execution_time (s)
+2025-06-03T19:33:42.269935|Function Name: get_video_path|found video in path: C:\Users\breandan\PycharmProjects\protex_take_home\data_generation\resources\inputs\video-1/timelapse_test.mp4|0.0
+2025-06-03T19:33:48.603946|Function Name: extract_frames|Extracted 4077 frames|6.322876691818237
+2025-06-03T19:33:48.603946|Function Name: extract_frames|saved 87 unique frames|6.322876691818237
+2025-06-03T19:33:48.603946|Function Name: extract_frames|removed 49 duplicates|6.322876691818237
+2025-06-03T19:33:56.510308|Function Name: pre_tag_video|Images processed: 88|7.906362056732178
+2025-06-03T19:33:56.512310|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T19:33:56.514066|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T19:33:56.514066|Function Name: save_annotations|COCO-format annotations saved to C:\Users\breandan\PycharmProjects\protex_take_home\data_generation\resources\outputs/detections.json|0.0
+2025-06-03T19:33:56.514066|Function Name: main function|completed main function|14.275872945785522
+2025-06-03T19:58:34.166893|Function Name: extract_frames|Extracted 4077 frames|8.930726528167725
+2025-06-03T19:58:34.168898|Function Name: extract_frames|saved 26 unique frames|8.932731866836548
+2025-06-03T19:58:34.168898|Function Name: extract_frames|removed 110 duplicates|8.932731866836548
+2025-06-03T19:58:42.576243|Function Name: pre_tag_video|Images processed: 88|8.39875841140747
+2025-06-03T19:58:42.578246|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T19:58:42.578246|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T19:58:42.667459|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.00774693489074707
+2025-06-03T20:01:56.537404|Function Name: extract_frames|Extracted 4077 frames|6.226181983947754
+2025-06-03T20:01:56.537404|Function Name: extract_frames|saved 26 unique frames|6.226181983947754
+2025-06-03T20:01:56.537404|Function Name: extract_frames|removed 110 duplicates|6.226181983947754
+2025-06-03T20:02:03.986771|Function Name: pre_tag_video|Images processed: 88|7.449367046356201
+2025-06-03T20:02:03.986771|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:02:03.988772|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:02:04.071791|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.00975656509399414
+2025-06-03T20:04:22.540145|Function Name: extract_frames|Extracted 4077 frames|6.85988450050354
+2025-06-03T20:04:22.540145|Function Name: extract_frames|saved 8 unique frames|6.85988450050354
+2025-06-03T20:04:22.540145|Function Name: extract_frames|removed 128 duplicates|6.85988450050354
+2025-06-03T20:04:29.757247|Function Name: pre_tag_video|Images processed: 88|7.202966690063477
+2025-06-03T20:04:29.759248|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:04:29.759248|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:04:29.851423|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.009511232376098633
+2025-06-03T20:05:45.868069|Function Name: extract_frames|Extracted 4077 frames|6.501370429992676
+2025-06-03T20:05:45.868069|Function Name: extract_frames|saved 8 unique frames|6.501370429992676
+2025-06-03T20:05:45.884006|Function Name: extract_frames|removed 128 duplicates|6.501370429992676
+2025-06-03T20:05:53.018807|Function Name: pre_tag_video|Images processed: 88|7.134800910949707
+2025-06-03T20:05:53.018807|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:05:53.018807|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:05:53.126201|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.004636526107788086
+2025-06-03T20:11:09.648382|Function Name: extract_frames|Extracted 4077 frames|6.269310474395752
+2025-06-03T20:11:09.650401|Function Name: extract_frames|saved 8 unique frames|6.271329402923584
+2025-06-03T20:11:09.650401|Function Name: extract_frames|removed 128 duplicates|6.271329402923584
+2025-06-03T20:11:16.706665|Function Name: pre_tag_video|Images processed: 88|7.046386957168579
+2025-06-03T20:11:16.707570|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:11:16.707570|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:11:16.748785|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.032070159912109375
+2025-06-03T20:11:34.508824|Function Name: extract_frames|Extracted 4077 frames|6.283932209014893
+2025-06-03T20:11:34.508824|Function Name: extract_frames|saved 8 unique frames|6.283932209014893
+2025-06-03T20:11:34.508824|Function Name: extract_frames|removed 128 duplicates|6.283932209014893
+2025-06-03T20:11:41.676641|Function Name: pre_tag_video|Images processed: 88|7.150179624557495
+2025-06-03T20:11:41.678572|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:11:41.678572|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:11:41.711138|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.027447938919067383
+2025-06-03T20:13:01.500669|Function Name: extract_frames|Extracted 4077 frames|6.266443490982056
+2025-06-03T20:13:01.500669|Function Name: extract_frames|saved 8 unique frames|6.266443490982056
+2025-06-03T20:13:01.500669|Function Name: extract_frames|removed 128 duplicates|6.266443490982056
+2025-06-03T20:13:08.790820|Function Name: pre_tag_video|Images processed: 88|7.277438640594482
+2025-06-03T20:13:08.806202|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:13:08.806202|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:13:08.837763|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.02563643455505371
+2025-06-03T20:14:22.220752|Function Name: extract_frames|Extracted 4077 frames|6.204569578170776
+2025-06-03T20:14:22.220752|Function Name: extract_frames|saved 8 unique frames|6.204569578170776
+2025-06-03T20:14:22.220752|Function Name: extract_frames|removed 128 duplicates|6.204569578170776
+2025-06-03T20:14:29.264521|Function Name: pre_tag_video|Images processed: 88|7.0284552574157715
+2025-06-03T20:14:29.264521|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:14:29.264521|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:14:29.316513|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.032189130783081055
+2025-06-03T20:59:48.863736|Function Name: extract_frames|Extracted 4077 frames|8.362823724746704
+2025-06-03T20:59:48.863736|Function Name: extract_frames|saved 8 unique frames|8.362823724746704
+2025-06-03T20:59:48.863736|Function Name: extract_frames|removed 128 duplicates|8.362823724746704
+2025-06-03T20:59:58.392806|Function Name: pre_tag_video|Images processed: 88|9.5079185962677
+2025-06-03T20:59:58.394810|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-03T20:59:58.394810|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-03T20:59:58.426058|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.024179697036743164
+2025-06-04T18:04:56.841230|Function Name: extract_frames|Extracted 4077 frames|8.28719687461853
+2025-06-04T18:04:56.841230|Function Name: extract_frames|saved 8 unique frames|8.28719687461853
+2025-06-04T18:04:56.841230|Function Name: extract_frames|removed 128 duplicates|8.28719687461853
+2025-06-04T18:05:05.299232|Function Name: pre_tag_video|Images processed: 88|8.458001613616943
+2025-06-04T18:05:05.299232|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-04T18:05:05.299232|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-04T18:05:05.331064|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.02049112319946289
+2025-06-04T18:25:33.730572|Function Name: extract_frames|Extracted 4077 frames|8.083398342132568
+2025-06-04T18:25:33.731573|Function Name: extract_frames|saved 8 unique frames|8.084399223327637
+2025-06-04T18:25:33.732686|Function Name: extract_frames|removed 128 duplicates|8.085511684417725
+2025-06-04T18:25:42.392437|Function Name: pre_tag_video|Images processed: 88|8.649730920791626
+2025-06-04T18:25:42.393437|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-04T18:25:42.394553|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-04T18:25:42.427648|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.026983261108398438
+2025-06-04T18:46:14.925873|Function Name: extract_frames|Extracted 4077 frames|12.224201917648315
+2025-06-04T18:46:14.925873|Function Name: extract_frames|saved 8 unique frames|12.224201917648315
+2025-06-04T18:46:14.925873|Function Name: extract_frames|removed 128 duplicates|12.224201917648315
+2025-06-04T18:46:22.894714|Function Name: pre_tag_video|Images processed: 88|7.950856685638428
+2025-06-04T18:46:22.894714|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-04T18:46:22.894714|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-04T18:46:22.926540|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.025244712829589844
+2025-06-04T19:01:18.004617|Function Name: extract_frames|Extracted 4077 frames|7.9325902462005615
+2025-06-04T19:01:18.004617|Function Name: extract_frames|saved 8 unique frames|7.9325902462005615
+2025-06-04T19:01:18.004617|Function Name: extract_frames|removed 128 duplicates|7.9325902462005615
+2025-06-04T19:01:26.700195|Function Name: pre_tag_video|Images processed: 88|8.695578336715698
+2025-06-04T19:01:26.704653|Function Name: pre_tag_video|Number of categories detected: 7|NA
+2025-06-04T19:01:26.704653|Function Name: pre_tag_video|Class Information: {'tv': 1, 'car': 2, 'boat': 3, 'bus': 4, 'truck': 5, 'person': 6, 'train': 7}|NA
+2025-06-04T19:01:26.744113|Function Name: save_annotations|COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.03213024139404297

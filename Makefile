@@ -63,4 +63,5 @@ clean-docker:
 	@echo "Docker cleanup complete"
 
 # Convenience target: build, run, then cleanup
-end-2-end: venv test build run
+end-2-end: venv test run
+end-2-end-full: venv test build run

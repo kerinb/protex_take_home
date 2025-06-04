@@ -6,6 +6,7 @@ ENV INPUT_PATH="data_generation/resources/inputs/video-1" \
 
 WORKDIR /app
 
+COPY requirements/ requirements/
 COPY requirements.txt .
 
 RUN apt-get update && \
