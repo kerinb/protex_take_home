@@ -1,0 +1,120 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "file_name": "frame_00000.jpg",
+      "height": 608,
+      "width": 1080
+    },
+    {
+      "id": 2,
+      "file_name": "frame_00001.jpg",
+      "height": 608,
+      "width": 1080
+    },
+    {
+      "id": 3,
+      "file_name": "frame_00002.jpg",
+      "height": 608,
+      "width": 1080
+    },
+    {
+      "id": 4,
+      "file_name": "frame_00003.jpg",
+      "height": 608,
+      "width": 1080
+    },
+    {
+      "id": 5,
+      "file_name": "frame_00004.jpg",
+      "height": 608,
+      "width": 1080
+    },
+    {
+      "id": 6,
+      "file_name": "frame_00005.jpg",
+      "height": 608,
+      "width": 1080
+    },
+    {
+      "id": 7,
+      "file_name": "frame_00006.jpg",
+      "height": 608,
+      "width": 1080
+    },
+    {
+      "id": 8,
+      "file_name": "frame_00007.jpg",
+      "height": 608,
+      "width": 1080
+    }
+  ],
+  "annotations": [
+    {
+      "id": 1,
+      "image_id": 1,
+      "category_id": 1,
+      "bbox": [
+        21.3253116607666,
+        0.0,
+        838.8753108978271,
+        599.8941650390625
+      ],
+      "area": 503236.404202936,
+      "iscrowd": 0
+    },
+    {
+      "id": 2,
+      "image_id": 3,
+      "category_id": 2,
+      "bbox": [
+        597.8780517578125,
+        235.07501220703125,
+        49.02813720703125,
+        27.510345458984375
+      ],
+      "area": 1348.780991775915,
+      "iscrowd": 0
+    },
+    {
+      "id": 3,
+      "image_id": 3,
+      "category_id": 3,
+      "bbox": [
+        22.83928871154785,
+        0.0,
+        729.3794612884521,
+        599.143798828125
+      ],
+      "area": 437003.18122357456,
+      "iscrowd": 0
+    },
+    {
+      "id": 4,
+      "image_id": 3,
+      "category_id": 2,
+      "bbox": [
+        478.85418701171875,
+        246.6547088623047,
+        36.6893310546875,
+        20.681655883789062
+      ],
+      "area": 758.7961194794625,
+      "iscrowd": 0
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "tv"
+    },
+    {
+      "id": 2,
+      "name": "car"
+    },
+    {
+      "id": 3,
+      "name": "boat"
+    }
+  ]
+}

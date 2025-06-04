@@ -1,0 +1,5 @@
+timestamp|function_name|message|execution_time
+2025-06-02T20:14:58.693472|extract_frames|Function: Extracted 4077 frames, saved 8 unique frames, removed 128 duplicates|6.235454320907593
+2025-06-02T20:14:58.693472|get_video_path|Function: found video in path: C:\Users\breandan\PycharmProjects\protex_take_home\data_generation\resources\inputs\video-1/timelapse_test.mp4|0.0
+2025-06-02T20:15:02.912372|pre_tag_video|Function: Images processed: 9|4.218900918960571
+2025-06-02T20:15:02.916604|save_annotations|Function: COCO-format annotations saved to data_generation/resources/outputs/detections.json|0.0
