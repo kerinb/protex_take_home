@@ -18,7 +18,7 @@ except ModuleNotFoundError:
     )
 
 
-def get_config(config_fp: str = None):
+def get_config():
     """
     @TODO - add logic to pass file instead of default values?
     :return: tuple of strings
@@ -26,27 +26,10 @@ def get_config(config_fp: str = None):
     # 📁 CONFIG
     output_dir = os.path.abspath(os.getenv("OUTPUT_PATH", "../resources/outputs"))
 
-    FRAME_OUTPUT_DIR, COCO_OUTPUT_PATH, MODEL_NAME, FRAME_STEP = (
-        None,
-        None,
-        None,
-        None,
-    )
-
-    if config_fp is not None and os.path.exists(config_fp):
-        """Read file contents here"""
-        config_fp = os.path.abspath(config_fp)
-        pass
-    else:
-        FRAME_OUTPUT_DIR = output_dir + "/" + "frames"
-        COCO_OUTPUT_PATH = output_dir + "/" + "detections.json"
-        FRAME_STEP = 30
-        MODEL_NAME = output_dir + "/" + "yolov8n.pt"
-
-    assert FRAME_OUTPUT_DIR is not None
-    assert COCO_OUTPUT_PATH is not None
-    assert FRAME_STEP is not None
-    assert MODEL_NAME is not None
+    FRAME_OUTPUT_DIR = output_dir + "/" + "frames",
+    COCO_OUTPUT_PATH = output_dir + "/" + "detections.json",
+    FRAME_STEP = 30,
+    MODEL_NAME = output_dir + "/" + "yolov8n.pt"
 
     return FRAME_OUTPUT_DIR, COCO_OUTPUT_PATH, FRAME_STEP, MODEL_NAME, output_dir
 
@@ -270,7 +253,7 @@ def main():
         frame_step,
         model_name,
         output_dir,
-    ) = get_config(config_fp)
+    ) = get_config()
     video_path = get_video_path(output_dir, video_dir)
     extract_frames(frame_output_dir, video_path, output_dir, frame_step)
     coco_output = pre_tag_video(frame_output_dir, model_name, output_dir)

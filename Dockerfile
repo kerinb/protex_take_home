@@ -1,24 +1,19 @@
 FROM python:3.9
 
-# Set a working directory (inside the container)
-WORKDIR /app
-
-# Copy contents into the container’s working directory
-COPY . .
-
 ENV INPUT_PATH="data_generation/resources/inputs/video-1" \
     OUTPUT_PATH="data_generation/resources/outputs/" \
     MODEL_CONFIG="data_generation/resources/inputs/config"
+
+WORKDIR /app
+
+COPY requirements.txt .
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libgl1 && \
     rm -rf /var/lib/apt/lists/*
 
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN echo "INPUT_PATH is: $INPUT_PATH" && \
-    echo "OUTPUT_PATH is: $OUTPUT_PATH" && \
-    echo "MODEL_CONFIG is: $MODEL_CONFIG" && \
-    # RUN apt-get update && apt-get install -y libgl1-mesa-glx && \
-    pip install --no-cache-dir -r requirements.txt
+COPY . .
 
 CMD ["python", "data_generation/main_logic/main_app.py"]
